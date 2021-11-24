@@ -46,6 +46,7 @@ SET(lsquic_STAT_SRCS
     lsquic_mini_conn_ietf.c
     lsquic_minmax.c
     lsquic_mm.c
+    lsquic_null_cc.c
     lsquic_pacer.c
     lsquic_packet_common.c
     lsquic_packet_gquic.c

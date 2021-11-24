@@ -53,6 +53,8 @@
 #include "lsquic_qdec_hdl.h"
 #include "lsquic_crand.h"
 
+#include "lsquic_null_cc.h"
+
 #define LSQUIC_LOGGER_MODULE LSQLM_SENDCTL
 #define LSQUIC_LOG_CONN_ID lsquic_conn_log_cid(ctl->sc_conn_pub->lconn)
 #include "lsquic_logger.h"
@@ -390,6 +392,10 @@ lsquic_send_ctl_init (lsquic_send_ctl_t *ctl, struct lsquic_alarmset *alset,
     case 2:
         ctl->sc_ci = &lsquic_cong_bbr_if;
         ctl->sc_cong_ctl = &ctl->sc_adaptive_cc.acc_bbr;
+        break;
+    case 4:
+        ctl->sc_ci = &lsquic_cong_null_if;
+        ctl->sc_cong_ctl = NULL;
         break;
     case 3:
     default:
